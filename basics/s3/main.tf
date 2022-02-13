@@ -58,6 +58,11 @@ resource "aws_s3_account_public_access_block" "jays3" {
   
 }
 
+
+
+
+
+
 output "s3" {
   value = aws_s3_bucket.jays3.arn
 }
