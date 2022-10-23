@@ -1,4 +1,4 @@
-resource "aws_api_gateway_rest_api" "hello" {
+resource "aws_api_gateway_rest_api" "biztalk" {
   body = jsonencode({
     openapi = "3.0.1"
     info = {
@@ -18,7 +18,7 @@ resource "aws_api_gateway_rest_api" "hello" {
       }
     }
   })
-  name = "hello_api"
+  name = var.rest_api_name
   endpoint_configuration {
     types = ["REGIONAL"]
   }
@@ -26,9 +26,9 @@ resource "aws_api_gateway_rest_api" "hello" {
 
 
 
-resource "aws_api_gateway_deployment" "hello" {
-  rest_api_id = aws_api_gateway_rest_api.hello.id
+resource "aws_api_gateway_deployment" "biztalk" {
+  rest_api_id = aws_api_gateway_rest_api.biztalk.id
   triggers = {
-    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.hello.body))
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.biztalk.body))
   }
 }
