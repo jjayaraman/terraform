@@ -1,7 +1,6 @@
 resource "aws_api_gateway_rest_api" "hello" {
-  name = "hello_api"
   body = jsonencode({
-    openApi = "3.0.1"
+    openapi = "3.0.1"
     info = {
       title   = var.rest_api_name
       version = "1.0"
@@ -9,7 +8,7 @@ resource "aws_api_gateway_rest_api" "hello" {
     paths = {
       (var.rest_api_path) = {
         get = {
-          x-amazon-api-gateway-integration = {
+          x-amazon-apigateway-integration = {
             httpMethod           = "GET"
             payLoadFormatVersion = "1.0"
             type                 = "HTTP_PROXY"
@@ -19,7 +18,7 @@ resource "aws_api_gateway_rest_api" "hello" {
       }
     }
   })
-
+  name = "hello_api"
   endpoint_configuration {
     types = ["REGIONAL"]
   }
