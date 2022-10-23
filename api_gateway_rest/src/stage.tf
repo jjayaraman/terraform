@@ -13,7 +13,9 @@ resource "aws_api_gateway_method_settings" "all" {
   method_path = "*/*"
 
   settings {
-    metrics_enabled = true
+    metrics_enabled      = true
+    caching_enabled      = true
+    cache_ttl_in_seconds = 60
   }
 
 }
