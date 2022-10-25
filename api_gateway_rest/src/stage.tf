@@ -1,8 +1,8 @@
 
 resource "aws_api_gateway_stage" "biztalk" {
-  stage_name    = "dev"
   deployment_id = aws_api_gateway_deployment.biztalk.id
   rest_api_id   = aws_api_gateway_rest_api.biztalk.id
+  stage_name    = var.stage_name
 }
 
 
@@ -13,9 +13,8 @@ resource "aws_api_gateway_method_settings" "all" {
   method_path = "*/*"
 
   settings {
-    metrics_enabled      = true
-    caching_enabled      = true
-    cache_ttl_in_seconds = 60
+    metrics_enabled = true
+    caching_enabled = false
   }
 
 }

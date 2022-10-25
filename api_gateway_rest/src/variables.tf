@@ -13,3 +13,9 @@ variable "rest_api_path" {
   description = "Rest API Path"
   type        = string
 }
+
+variable "stage_name" {
+  description = "Deployment stage name"
+  type        = string
+  default     = "dev"
+}
